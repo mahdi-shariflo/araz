@@ -1,0 +1,11 @@
+.container-card-product {
+  @apply w-full md:w-[270px] border bg-white border-gray-300/60 md:border-gray-100 drop-shadow-sm rounded-xl  flex  md:flex-col relative overflow-hidden cursor-pointer duration-300 transition-all  hover:drop-shadow-xl;
+}
+
+.roban {
+  @apply absolute -left-8 top-5 w-fit px-8 py-1 -rotate-[44deg] drop-shadow-sm bg-[#EC4338] text-white;
+}
+
+.card-image {
+  @apply w-[100px] md:w-[90%] h-[100px]  md:h-[170px] mx-2 md:mx-auto my-3 rounded-xl  shadow-none object-fill;
+}

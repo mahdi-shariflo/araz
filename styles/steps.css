@@ -1,0 +1,4 @@
+.step-class{
+    @apply w-16 h-16  rounded-full absolute -top-8 flex justify-center items-center drop-shadow-xl
+}
+

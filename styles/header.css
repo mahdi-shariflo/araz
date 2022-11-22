@@ -1,0 +1,11 @@
+.dropdown {
+  @apply min-w-[140px] px-2 py-3 border rounded-md drop-shadow-md bg-white absolute left-0 top-10 flex flex-col;
+}
+.dropdown > div {
+  @apply flex items-center gap-2 hover:bg-gray-100 py-2 px-4 transition-all text-gray-700 rounded-md cursor-pointer;
+}
+
+svg {
+  width: 22px;
+  height: 22px;
+}
