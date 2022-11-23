@@ -51,7 +51,7 @@ const StepOne = ({ setStep, setMessage }: Props) => {
               عنوان
             </label>
             <Field
-              className="outline-none border  border-gray-300 rounded-lg px-2 py-3 text-black placeholder:text-sm !text-[15px] max-w-[350px]"
+              className="step-input max-w-[350px]"
               name="title"
               placeholder="مثلا تخفیف 4 درصد میوه"
             />
@@ -63,7 +63,7 @@ const StepOne = ({ setStep, setMessage }: Props) => {
             </label>
             <Field
               as="textarea"
-              className="outline-none border  border-gray-300 rounded-lg px-2 py-4 text-black !text-[15px] placeholder:text-sm resize-none h-36"
+              className="step-input resize-none h-36"
               name="message"
               placeholder="متن پیام"
             />

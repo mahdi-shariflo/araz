@@ -31,11 +31,14 @@
   }
 }
 
-@import url("./header.css");
+@layer utilities {
+  .ltr{
+    direction: ltr !important;
+  }
+}
 
-@import url("./menu.css");
-@import url("./cardProduct.css");
-@import url("./steps.css");
+
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -70,3 +73,11 @@ input[type="number"] {
     hsla(211, 58%, 79%, 1) 100%
   );
 }
+
+
+@import url("./header.css");
+
+@import url("./menu.css");
+@import url("./cardProduct.css");
+@import url("./steps.css");
+@import url("./auth.css");

@@ -2,3 +2,8 @@
     @apply w-16 h-16  rounded-full absolute -top-8 flex justify-center items-center drop-shadow-xl
 }
 
+
+
+.step-input{
+    @apply outline-none border  border-gray-300 rounded-lg px-2 py-3 text-black placeholder:text-sm !text-[15px] md:!text-[12px]
+}

@@ -1,0 +1,13 @@
+.styles_react-code-input__CRulA {
+  display: flex !important;
+  justify-content: center !important;
+}
+.styles_react-code-input__CRulA > input {
+    accent-color:#222f3e  !important;
+  font-family: "snasMedium" !important;
+  color: #222f3e !important;
+  border: hidden !important;
+  border: 2px solid #eee !important;
+  margin: 0 6px !important;
+  border-radius: 8px !important;
+}
