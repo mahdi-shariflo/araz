@@ -3,7 +3,7 @@ import Logo from "../../public/image/logo.png";
 import { FaPhone } from "react-icons/fa";
 import Image from "next/image";
 import { ChangeEn } from "../../utils/inputEnToFa";
-import { useMutation } from "react-query";
+import { isError, useMutation } from "react-query";
 import { authApi } from "../../utils/api/auth";
 import PN from "persian-number";
 import { BeatLoader } from "react-spinners";
@@ -46,6 +46,9 @@ const StepOne = ({
 
   const onKeyDown = () => {
     setError("");
+    if (mutate.isError) {
+      mutate.reset();
+    }
   };
   return (
     <div
@@ -78,8 +81,8 @@ const StepOne = ({
         <p className="text-[10px] pt-3 text-red-500">
           {error && "لطفا شماره تلفن خود را وارد کنید"}
         </p>
-        <div className="mt-12">
-          <p className="text-[10px] pt-3 text-red-500">
+        <div className="mt-6 ">
+          <p className="text-[10px] py-3 text-red-500">
             {mutate.isError && "مشکل سرور، لطفا بعدا تلاش"}
           </p>
           <button className="bg-[#0096f5] py-4 flex justify-center text-white rounded-lg drop-shadow-md hover:bg-[#0186d9] w-full ">

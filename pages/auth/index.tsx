@@ -4,6 +4,7 @@ import StepImage from "../../components/auth/StepImage";
 import StepOne from "../../components/auth/StepOne";
 import StepTwo from "../../components/auth/StepTwo";
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 
 const Auth = () => {
   const [step, setStep] = useState(0);
@@ -12,6 +13,9 @@ const Auth = () => {
 
   return (
     <div>
+      <Head>
+        <title>ورود یا ثبت نام</title>
+      </Head>
       <div className="flex justify-between items-center h-screen w-screen">
         <div className="flex-1 w-full h-full overflow-hidden flex justify-center items-center  flex-col ">
           <StepOne
@@ -33,18 +37,6 @@ const Auth = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps =
-  async (ctx) => {
-    const token = ctx.req.cookies["auth"];
-    if (token) {
-      return {
-        redirect: {
-          destination: "/",
-          permanent: false,
-        },
-      };
-    }
-    return { props: {} };
-  };
+
 
 export default Auth;

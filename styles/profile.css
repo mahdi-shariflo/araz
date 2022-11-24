@@ -6,6 +6,38 @@
 
 
 }
+
+.label-edit-profile {
+  cursor: pointer;
+  width: 100px !important;
+  height: 100px !important;
+  border: 1px solid gray;
+  border-radius: 100%;
+}
+
+#upload-photo {
+  opacity: 0;
+  z-index: -1;
+  width: 2px;
+}
+
+.bg-test {
+  background-image: linear-gradient(
+    65.9deg,
+    rgba(85, 228, 224, 1) 5.5%,
+    rgba(75, 68, 224, 0.74) 54.2%,
+    rgba(64, 198, 238, 1) 55.2%,
+    rgba(177, 36, 224, 1) 98.4%
+  );
+}
+.bg-test1 {
+  background-image: linear-gradient(
+    67.2deg,
+    rgba(37, 208, 199, 1) -7.5%,
+    rgba(165, 90, 240, 1) 62.7%
+  );
+}
+
 /* 
 .container-profile::after {
   content: "";

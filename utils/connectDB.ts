@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
-const connectDB = async  () => {
+const connectDB = async () => {
   if (mongoose.connections[0].readyState) {
     console.log("already connected");
     return;
   }
 
-  await mongoose
+  mongoose
     .connect(
       "mongodb+srv://mahdi:m1a2h3d4i5@cluster0.jrbdkq6.mongodb.net/?retryWrites=true&w=majority"
     )
