@@ -1,11 +1,11 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { MenuIcons } from "../../utils/data";
 import { HiShoppingCart } from "react-icons/hi";
 import { FiUser, FiMenu } from "react-icons/fi";
-import { getRecoil, setRecoil } from "recoil-nexus";
+import { setRecoil } from "recoil-nexus";
 import DropMenu from "./DropMenu";
-import { drawerState } from "../../atom/atom";
+import { drawerState, userState } from "../../atom/atom";
 import { useRecoilValue } from "recoil";
 import { useRouter } from "next/router";
 type Props = {};
@@ -14,6 +14,11 @@ const Header = () => {
   const router = useRouter();
   const isLogin = false;
   const drawer = useRecoilValue(drawerState);
+  const user = useRecoilValue(userState);
+
+  useEffect(() => {
+    console.log(user)
+  }, [user]);
   return (
     <header className="sticky top-0 shadow-sm z-50 bg-white">
       <div className="flex justify-between items-center py-5 w-[95%] mx-auto">
@@ -53,7 +58,7 @@ const Header = () => {
         <div className="flex gap-4 items-center">
           <HiShoppingCart className="text-black" />
 
-          {isLogin ? (
+          {user.phonenumber ? (
             <DropMenu Icon={FiUser} />
           ) : (
             <button

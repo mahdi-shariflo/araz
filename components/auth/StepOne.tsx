@@ -1,9 +1,12 @@
-import React from "react";
+import { useState } from "react";
 import Logo from "../../public/image/logo.png";
 import { FaPhone } from "react-icons/fa";
 import Image from "next/image";
 import { ChangeEn } from "../../utils/inputEnToFa";
-
+import { useMutation } from "react-query";
+import { authApi } from "../../utils/api/auth";
+import PN from "persian-number";
+import { BeatLoader } from "react-spinners";
 type Props = {
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
@@ -17,16 +20,38 @@ const StepOne = ({
   phone,
   setPhone,
 }: Props) => {
+  const [error, setError] = useState("");
   const change = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setPhone(ChangeEn(e.target.value));
   };
+  const data = {
+    phonenumber: PN.convertPeToEn(phone),
+  };
+
+  // @ts-ignore
+  const mutate = useMutation(() => authApi(data), {
+    onSuccess: () => {
+      setStep(1);
+    },
+  });
+
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!phone)
+      return setError("لطفا شماره تلفن خود را وارد کنید");
+    mutate.mutate();
+  };
+
+  const onKeyDown = () => {
+    setError("");
+  };
   return (
     <div
       className={` min-w-[400px] h-full transition-all  duration-[.500ms] ${
         step === 0
-          ? "opacity-100  -translate-x-[0vh] translate-y-1/2"
+          ? "opacity-100  translate-x-0 translate-y-1/2"
           : "opacity-0 translate-x-[90vh] translate-y-1/2"
       }`}
     >
@@ -39,12 +64,7 @@ const StepOne = ({
       <p className="text-sm pt-2 text-gray-500">
         برای ورود لطفا شماره تلفن خود را وارد کنید
       </p>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setStep(1);
-        }}
-      >
+      <form onSubmit={submit}>
         <div className="flex items-center border p-3 rounded-lg mt-10 text-black">
           <FaPhone className="w-5 h-5" />
           <input
@@ -52,11 +72,28 @@ const StepOne = ({
             onChange={change}
             type="tel"
             className="bg-transparent ltr w-full  outline-none !text-[16px]"
+            onKeyDown={onKeyDown}
           />
         </div>
-        <button className="bg-[#0096f5] py-3 text-white rounded-lg drop-shadow-md hover:bg-[#0186d9] w-full mt-14">
-          ارسال کد
-        </button>
+        <p className="text-[10px] pt-3 text-red-500">
+          {error && "لطفا شماره تلفن خود را وارد کنید"}
+        </p>
+        <div className="mt-12">
+          <p className="text-[10px] pt-3 text-red-500">
+            {mutate.isError && "مشکل سرور، لطفا بعدا تلاش"}
+          </p>
+          <button className="bg-[#0096f5] py-4 flex justify-center text-white rounded-lg drop-shadow-md hover:bg-[#0186d9] w-full ">
+            {mutate.isLoading ? (
+              <BeatLoader
+                color="white"
+                className="py-1"
+                size={10}
+              />
+            ) : (
+              "ارسال کد"
+            )}
+          </button>
+        </div>
       </form>
     </div>
   );

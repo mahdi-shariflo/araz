@@ -1,16 +1,51 @@
 import React from "react";
 import Logo from "../../public/image/logo.png";
 import Image from "next/image";
-import ReactCodeInput from 'react-verification-code-input';
-import { ChangeEn } from "../../utils/inputEnToFa";
+import ReactCodeInput from "react-verification-code-input";
+import { useMutation } from "react-query";
+import { authVerifyApi } from "../../utils/api/auth";
+import PN from "persian-number";
+import { BeatLoader } from "react-spinners";
+import { useRouter } from "next/router";
+import { setRecoil } from "recoil-nexus";
+import { userState } from "../../atom/atom";
 
 type Props = {
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
-  setCode:React.Dispatch<React.SetStateAction<string>>
+  setCode: React.Dispatch<React.SetStateAction<string>>;
+  phone: string;
 };
 
-const StepTwo = ({ step, setStep , setCode}: Props) => {
+const StepTwo = ({
+  step,
+  setStep,
+  setCode,
+  phone,
+}: Props) => {
+  const router = useRouter();
+
+  // @ts-ignore
+  const { isLoading, error, isError, mutate } = useMutation(
+    // @ts-ignore
+    (data) => authVerifyApi(data),
+    {
+      onSuccess: ({ data }) => {
+        setRecoil(userState, {
+          ...data.user,
+        });
+        router.push("/");
+      },
+    }
+  );
+  const onComplete = (code: string) => {
+    const data = {
+      phonenumber: PN.convertPeToEn(phone),
+      code: Number(code),
+    };
+    // @ts-ignore
+    mutate(data);
+  };
   return (
     <div
       className={`min-w-[400px] opacity-100 transition-all ${
@@ -33,16 +68,39 @@ const StepTwo = ({ step, setStep , setCode}: Props) => {
           onClick={() => setStep(0)}
           className="text-blue-500 cursor-pointer underline"
         >
-          009142652183
+          {phone}
         </p>
       </div>
 
       <div className="flex items-center justify-center  p-3  mt-16">
-        <ReactCodeInput fields={5} className="ltr w-full" onChange={(i)=> setCode((i))} />
+        <ReactCodeInput
+          fields={5}
+          className="ltr w-full"
+          onChange={(i) => setCode(i)}
+          onComplete={onComplete}
+        />
       </div>
-      <button className="bg-[#0096f5] py-3 text-white rounded-lg drop-shadow-md hover:bg-[#0186d9] w-full mt-14">
-        ارسال کد
-      </button>
+      <div className="mt-6">
+        <p className="text-[10px] text-red-500 pr-2">
+          {isError
+            ? // @ts-ignore
+              error?.response?.status === 400
+              ? "کد وارد شده صحیح نمی باشد"
+              : "مشکل سرور"
+            : ""}
+        </p>
+        <button className="bg-[#0096f5] py-3 text-white rounded-lg drop-shadow-md hover:bg-[#0186d9] w-full mt-5">
+          {isLoading ? (
+            <BeatLoader
+              color="white"
+              className="mt-2"
+              size={10}
+            />
+          ) : (
+            " ارسال"
+          )}
+        </button>
+      </div>
     </div>
   );
 };

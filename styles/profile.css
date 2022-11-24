@@ -1,0 +1,33 @@
+.btn-profile-screen {
+  @apply bg-green-500 w-28 py-[7px] rounded-xl text-white border-2 border-white shadow-lg;
+}
+
+.container-profile {    
+
+
+}
+/* 
+.container-profile::after {
+  content: "";
+  background-color: transparent;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 290px 272px;
+  border-color: transparent transparent #fff transparent;
+}
+.container-profile::before {
+  content: "";
+  background-color: transparent;
+  position: absolute;
+  bottom: 0;
+  right: 74%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 307px 0 0 307px;
+  border-color: transparent transparent transparent #fff;
+} */

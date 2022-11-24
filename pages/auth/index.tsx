@@ -1,16 +1,14 @@
-import Image from "next/image";
+import { useMutation } from "react-query";
 import { useState } from "react";
 import StepImage from "../../components/auth/StepImage";
-
 import StepOne from "../../components/auth/StepOne";
 import StepTwo from "../../components/auth/StepTwo";
+import { GetServerSideProps } from "next";
 
 const Auth = () => {
   const [step, setStep] = useState(0);
   const [phone, setPhone] = useState("");
   const [code, setCode] = useState("");
-
-
 
   return (
     <div>
@@ -23,6 +21,7 @@ const Auth = () => {
             step={step}
           />
           <StepTwo
+            phone={phone}
             setStep={setStep}
             step={step}
             setCode={setCode}
@@ -33,5 +32,19 @@ const Auth = () => {
     </div>
   );
 };
+
+export const getServerSideProps: GetServerSideProps =
+  async (ctx) => {
+    const token = ctx.req.cookies["auth"];
+    if (token) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
+    return { props: {} };
+  };
 
 export default Auth;
