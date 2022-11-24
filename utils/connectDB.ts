@@ -8,7 +8,7 @@ const connectDB = async  () => {
 
   await mongoose
     .connect(
-      process.env.MONGODB_URI!
+      "mongodb+srv://mahdi:m1a2h3d4i5@cluster0.jrbdkq6.mongodb.net/?retryWrites=true&w=majority"
     )
     .then(() => {
       console.log("connected DB");
