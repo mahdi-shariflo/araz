@@ -4,9 +4,8 @@ import API from "./axios";
 type Props = {
   phonenumber: string;
 };
-export const authApi = (data: Props) => {
-  API.post("/auth", data);
-};
+export const authApi = (data: Props) => API.post("/auth", data);
+
 
 type verify = {
   phonenumber: string;
