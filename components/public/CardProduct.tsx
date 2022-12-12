@@ -13,8 +13,8 @@ const CardProduct = () => {
         alt=""
         loading="lazy"
       />
-      <div className="mt-10 flex-1 md:flex-[0] md:mt-4 px-3 text-black ">
-        <p className="cursor-pointer overflow-hidden whitespace-nowrap overflow-ellipsis w-[80%]">
+      <div className="mt-6 flex-1 md:flex-[0] md:mt-4 px-3 text-black ">
+        <p className="cursor-pointer text-[11px] md:text-xs overflow-hidden whitespace-nowrap overflow-ellipsis w-[80%]">
           هندزفری بلوتوثی مدل lopon 12
         </p>
         <div className="flex items-center justify-between mt-7">
@@ -22,7 +22,7 @@ const CardProduct = () => {
             فروشگاه معاصر
           </span>
 
-          <p className="font-snasBlack text-[17px]">
+          <p className="font-snasBlack text-[14px] md:text-[17px]">
             127,000{" "}
             <span className="text-gray-500">تومان</span>
           </p>

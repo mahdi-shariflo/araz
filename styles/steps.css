@@ -1,9 +1,12 @@
 .step-class{
-    @apply w-16 h-16  rounded-full absolute -top-8 flex justify-center items-center drop-shadow-xl
+    @apply w-14 h-14 md:w-16 md:h-16  rounded-full absolute -top-7 md:-top-8 flex justify-center items-center drop-shadow-xl
+}
+.step-class >svg{
+    @apply w-7 h-7 md:w-8 md:h-8
 }
 
 
 
 .step-input{
-    @apply outline-none border  border-gray-300 rounded-lg px-2 py-3 text-black placeholder:text-sm !text-[15px] md:!text-[12px]
+    @apply outline-none border  border-gray-300 rounded-lg px-2 py-2 md:py-3 text-black placeholder:text-sm !text-[15px] md:!text-[12px]
 }

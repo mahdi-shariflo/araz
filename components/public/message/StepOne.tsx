@@ -36,8 +36,8 @@ const StepOne = ({ setStep, setMessage }: Props) => {
     setStep((prev) => prev + 1);
   };
   return (
-    <div className="mt-20 md:mt-28 bg-white  p-5 py-8 md:py-14  rounded-xl">
-      <h1 className="font-snasBlack text-2xl text-center pb-10 text-black">
+    <div className="mt-20 md:mt-28 bg-white  p-5 py-3 md:py-14  rounded-xl">
+      <h1 className="font-snasBlack text-xl md:text-2xl text-center pb-10 text-black">
         متن ارسالی به کاربران
       </h1>
       <Formik

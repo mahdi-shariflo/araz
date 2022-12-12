@@ -6,8 +6,9 @@ interface props {
   className?: string;
   placeholder: string;
   value: string;
-  onChange:any;
+  onChange: any;
   name: string;
+  error?: any;
 }
 const InputProfile = ({
   label,
@@ -17,9 +18,10 @@ const InputProfile = ({
   value,
   onChange,
   name,
+  error,
 }: props) => {
   return (
-    <div className={`flex flex-col w-full ${className}`}>
+    <div className={`flex flex-col w-full relative ${className}`}>
       <label className="text-[12px] text-white pb-2">
         {label}
       </label>
@@ -29,19 +31,24 @@ const InputProfile = ({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          rows={7}
-          className="bg-gray-50 outline-none resize-none text-[12px] font-yekan !w-full px-2 py-3 rounded-md"
+          rows={5}
+          className="bg-gray-50 outline-none resize-none text-[12px] font-yekan !w-full px-2 py-3 rounded-md border"
         />
       ) : (
-        <input
-          className="bg-gray-50 outline-none text-[12px] font-yekan w-full px-2 py-4 rounded-md"
-          type="text"
-          placeholder={placeholder}
-          onChange={onChange}
-          value={value}
-          name={name}
-        />
+        <>
+          <input
+            className="bg-gray-50 outline-none text-[12px] font-yekan w-full px-2 py-4 rounded-md border"
+            type="text"
+            placeholder={placeholder}
+            onChange={onChange}
+            value={value}
+            name={name}
+          />
+        </>
       )}
+      <p className="text-xs text-red-500 w-fit absolute -bottom-6">
+        {error}
+      </p>
     </div>
   );
 };

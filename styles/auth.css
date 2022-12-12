@@ -11,3 +11,11 @@
   margin: 0 6px !important;
   border-radius: 8px !important;
 }
+
+
+@media all and (max-width:768px) {
+  .styles_react-code-input__CRulA > input{
+    width: 45px !important;
+    height: 45px !important;
+  }
+}

@@ -9,6 +9,7 @@ import { BeatLoader } from "react-spinners";
 import { useRouter } from "next/router";
 import { setRecoil } from "recoil-nexus";
 import { userState } from "../../atom/atom";
+import * as Yup from "yup"
 
 type Props = {
   step: number;
@@ -48,7 +49,7 @@ const StepTwo = ({
   };
   return (
     <div
-      className={`min-w-[400px] opacity-100 transition-all ${
+      className={`w-[90%] md:min-w-[400px] opacity-100 transition-all ${
         step === 1
           ? "  translate-x-0 -translate-y-[25vh] duration-500  "
           : "opacity-100 translate-x-[100vh] -translate-y-[25vh] duration-300  "
@@ -72,7 +73,7 @@ const StepTwo = ({
         </p>
       </div>
 
-      <div className="flex items-center justify-center  p-3  mt-16">
+      <div className="flex items-center justify-center  p-3 mt-10  md:mt-16">
         <ReactCodeInput
           fields={5}
           className="ltr w-full"

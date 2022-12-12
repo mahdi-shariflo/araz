@@ -52,7 +52,7 @@ const StepOne = ({
   };
   return (
     <div
-      className={` min-w-[400px] h-full transition-all  duration-[.500ms] ${
+      className={` w-full px-6 md:px-0 md:min-w-[400px] h-full transition-all  duration-[.500ms] ${
         step === 0
           ? "opacity-100  translate-x-0 translate-y-1/2"
           : "opacity-0 translate-x-[90vh] translate-y-1/2"

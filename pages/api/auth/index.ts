@@ -36,7 +36,7 @@ const createUser = async (
         .json({ message: "phonenumber is not a number" });
 
     if (checkUser) {
-      await User.updateOne({ code });
+      await User.updateOne({ code: 12345 });
       res.status(200).json({ message: "OK" });
       return;
     } else {

@@ -8,6 +8,7 @@ const MenuBottom = () => {
       <div className="flex justify-around items-center ">
         {mobileMenuItems.map(({ id, href, Icon }) => (
           <div
+            onClick={() => router.push(href)}
             key={id}
             className="flex flex-col items-center gap-2"
           >

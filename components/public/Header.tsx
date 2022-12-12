@@ -63,7 +63,7 @@ const Header = () => {
           ) : (
             <button
               onClick={() => router.push("/auth")}
-              className="bg-[#0095f5]  text-[11px] drop-shadow-sm text-white p-3 rounded-lg"
+              className="bg-[#0095f5] hidden md:block  text-[11px] drop-shadow-sm text-white p-3 rounded-lg"
             >
               ورود یا ثبت نام
             </button>

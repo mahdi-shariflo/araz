@@ -8,7 +8,7 @@ type Props = {
 };
 const StepImage = ({ step }: Props) => {
   return (
-    <div className="flex-1  overflow-hidden h-full">
+    <div className="hidden md:flex flex-1  overflow-hidden h-full">
       {step === 0 ? (
         <Image
           className="h-full object-contain"

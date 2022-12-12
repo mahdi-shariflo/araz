@@ -10,7 +10,7 @@ type Props = {
 
 const StepLevel = ({ step }: Props) => {
   return (
-    <div className="flex justify-center  pt-10 w-full mx-auto">
+    <div className="flex justify-center md:pt-10 w-full mx-auto">
       <div className="relative flex justify-between h-1 w-full bg-white mt-14">
         <div
           className={`${
@@ -22,7 +22,7 @@ const StepLevel = ({ step }: Props) => {
           <div
             className={`step-class  right-0 bg-[#0096f5] `}
           >
-            <BiMessageAltAdd className="text-white w-8 h-8" />
+            <BiMessageAltAdd className="text-white " />
           </div>
         </div>
         <div
@@ -32,7 +32,7 @@ const StepLevel = ({ step }: Props) => {
               : "bg-white"
           }`}
         >
-          <BiLocationPlus className={` w-8 h-8 ${step === 2 || step === 3 ? "text-white" : "text-gray-500"}`} />
+          <BiLocationPlus className={`  ${step === 2 || step === 3 ? "text-white" : "text-gray-500"}`} />
         </div>
         <div
           className={`${
@@ -46,7 +46,7 @@ const StepLevel = ({ step }: Props) => {
               step === 3 ? "bg-[#0096f5]" : "bg-white"
             }`}
           >
-            <BiMessageAltCheck className={` w-8 h-8 ${step === 3 ? "text-white" : "text-gray-500"}`} />
+            <BiMessageAltCheck className={`  ${step === 3 ? "text-white" : "text-gray-500"}`} />
           </div>
         </div>
       </div>
